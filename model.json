@@ -1,0 +1,1148 @@
+{
+    "procInstViewUrl" : "/loansubsystem/task/computerRoomViewForm",
+    "procInstDraftUrl" : "/loansubsystem/task/computerRoomApplyForm",
+    "modelId" : "18739581965",
+    "name" : "机房申请流程",
+    "description" : "机房申请流程",
+    "procInstStartUrl" : "/loansubsystem/task/computerRoomApplyForm",
+    "procInstStartRePerm" : "menu_pl_computerroomapplyheaderlist",
+    "model" : {
+      "resourceId" : "7503",
+      "ssextensions" : [ ],
+      "bounds" : {
+        "upperLeft" : {
+          "x" : 0,
+          "y" : 0
+        },
+        "lowerRight" : {
+          "x" : 1200,
+          "y" : 1050
+        }
+      },
+      "stencilset" : {
+        "namespace" : "http://b3mn.org/stencilset/bpmn2.0#",
+        "url" : "stencilsets/bpmn2.0/bpmn2.0.json"
+      },
+      "stencil" : {
+        "id" : "BPMNDiagram"
+      },
+      "properties" : {
+        "process_id" : "pl_computer_room_apply_process_1244818323863113729",
+        "name" : "机房申请流程_copy",
+        "process_author" : "lms"
+      },
+      "childShapes" : [ {
+        "outgoing" : [ {
+          "resourceId" : "sid-4FF647BE-DE48-4ED6-B14E-151E4B2959DF"
+        } ],
+        "resourceId" : "sid-5A1A0D9A-3826-4C0F-B56E-6176146E27C3",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 35,
+            "y" : 195
+          },
+          "lowerRight" : {
+            "x" : 65,
+            "y" : 225
+          }
+        },
+        "stencil" : {
+          "id" : "StartNoneEvent"
+        },
+        "dockers" : [ ],
+        "properties" : {
+          "formproperties" : "",
+          "formkeydefinition" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "initiator" : "initiator",
+          "overrideid" : "",
+          "name" : ""
+        },
+        "childShapes" : [ ]
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-2D3BBB82-95FC-4C07-B501-22BC52489C5B"
+        } ],
+        "resourceId" : "sid-3054DFB4-61E7-4728-9304-CF5677B980D5",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 140,
+            "y" : 170
+          },
+          "lowerRight" : {
+            "x" : 240,
+            "y" : 250
+          }
+        },
+        "stencil" : {
+          "id" : "UserTask"
+        },
+        "dockers" : [ ],
+        "properties" : {
+          "formproperties" : null,
+          "multiinstance_collection" : "",
+          "formkeydefinition" : "/loansubsystem/task/computerRoomAduitForm",
+          "tasklisteners" : null,
+          "multiinstance_condition" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "prioritydefinition" : "",
+          "multiinstance_cardinality" : "",
+          "multiinstance_variable" : "",
+          "usertaskassignment" : {
+            "assignment" : {
+              "idm" : {
+                "candidateGroups" : [ {
+                  "name" : "系统管理员",
+                  "persistentState" : {
+                    "name" : "系统管理员",
+                    "type" : "0"
+                  },
+                  "revisionNext" : 1,
+                  "id" : "system_admin",
+                  "type" : "0",
+                  "$$hashKey" : "0DB",
+                  "revision" : 0
+                } ],
+                "type" : "groups"
+              },
+              "assignee" : "${customerMR}",
+              "type" : "idm"
+            }
+          },
+          "multiinstance_type" : "None",
+          "exclusivedefinition" : "false",
+          "duedatedefinition" : "",
+          "asynchronousdefinition" : "false",
+          "overrideid" : "audit",
+          "name" : "审批人代码传入",
+          "isforcompensation" : "false"
+        },
+        "childShapes" : [ ]
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-C07CC7C7-00FF-4C05-B575-CBE1D0645E48"
+        } ],
+        "resourceId" : "sid-6830216C-AAE8-4CE2-9F43-D46A29CC1D34",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 725,
+            "y" : 390
+          },
+          "lowerRight" : {
+            "x" : 825,
+            "y" : 470
+          }
+        },
+        "stencil" : {
+          "id" : "ServiceTask"
+        },
+        "dockers" : [ ],
+        "properties" : {
+          "servicetaskfields" : {
+            "fields" : [ {
+              "stringValue" : "Finished",
+              "expression" : "",
+              "string" : "",
+              "implementation" : "Finished",
+              "name" : "status"
+            } ]
+          },
+          "multiinstance_collection" : "",
+          "multiinstance_condition" : "",
+          "servicetaskexpression" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "servicetaskresultvariable" : "",
+          "multiinstance_cardinality" : "",
+          "multiinstance_variable" : "",
+          "multiinstance_type" : "None",
+          "exclusivedefinition" : "false",
+          "servicetaskdelegateexpression" : "",
+          "asynchronousdefinition" : "false",
+          "overrideid" : "finishedsetstatus",
+          "name" : "流程正常结束",
+          "isforcompensation" : "false",
+          "servicetaskclass" : "com.wl.wlp2ploansystem.infrastructures.workflow.servicetasks.NormalEndProcessInstST"
+        },
+        "childShapes" : [ ]
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-3B523981-875F-4F19-BD31-9263BD4A4C3B"
+        } ],
+        "resourceId" : "sid-6D80170F-8E4A-4391-9057-8740806FC097",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 365,
+            "y" : 315
+          },
+          "lowerRight" : {
+            "x" : 465,
+            "y" : 395
+          }
+        },
+        "stencil" : {
+          "id" : "ServiceTask"
+        },
+        "dockers" : [ ],
+        "properties" : {
+          "servicetaskfields" : {
+            "fields" : [ {
+              "stringValue" : "ReRequest",
+              "expression" : "",
+              "string" : "",
+              "implementation" : "ReRequest",
+              "name" : "status"
+            } ]
+          },
+          "multiinstance_collection" : "",
+          "multiinstance_condition" : "",
+          "servicetaskexpression" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "servicetaskresultvariable" : "",
+          "multiinstance_cardinality" : "",
+          "multiinstance_variable" : "",
+          "multiinstance_type" : "None",
+          "exclusivedefinition" : "false",
+          "servicetaskdelegateexpression" : "",
+          "asynchronousdefinition" : "false",
+          "overrideid" : "requestsetstatus",
+          "name" : "退回至进件",
+          "isforcompensation" : "false",
+          "servicetaskclass" : "com.wl.wlp2ploansystem.infrastructures.workflow.servicetasks.SetProcessInstStatusST"
+        },
+        "childShapes" : [ ]
+      }, {
+        "outgoing" : [ ],
+        "resourceId" : "sid-86CDF07C-931F-44C2-BEF0-0E0C1BD39EAE",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 760,
+            "y" : 510
+          },
+          "lowerRight" : {
+            "x" : 790,
+            "y" : 540
+          }
+        },
+        "stencil" : {
+          "id" : "ThrowNoneEvent"
+        },
+        "dockers" : [ {
+          "x" : 775,
+          "y" : 525
+        } ],
+        "properties" : {
+          "executionlisteners" : "",
+          "documentation" : "",
+          "overrideid" : "",
+          "name" : ""
+        },
+        "childShapes" : [ ]
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-AF3815CC-B01F-4DC7-93DC-203481F44ECC"
+        }, {
+          "resourceId" : "sid-D6EFDBDE-24EC-4846-A72E-8301CB6DB45B"
+        }, {
+          "resourceId" : "sid-6840DD29-8461-481B-B523-EEFD4978FA7F"
+        } ],
+        "resourceId" : "sid-298FFBFB-3F76-4294-9D85-D9858DC12837",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 290,
+            "y" : 185
+          },
+          "lowerRight" : {
+            "x" : 330,
+            "y" : 225
+          }
+        },
+        "stencil" : {
+          "id" : "ExclusiveGateway"
+        },
+        "dockers" : [ ],
+        "properties" : {
+          "exclusivedefinition" : "false",
+          "sequencefloworder" : "",
+          "asynchronousdefinition" : "false",
+          "documentation" : "",
+          "overrideid" : "",
+          "name" : ""
+        },
+        "childShapes" : [ ]
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-9C1173CC-24F8-4E06-B1CA-B6E7AA4B2C70"
+        } ],
+        "resourceId" : "sid-1B0FA1EC-A80A-4DED-A90E-C8E71A0B88F5",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 309.4978308121625,
+            "y" : 0
+          },
+          "lowerRight" : {
+            "x" : 409.4978308121625,
+            "y" : 80
+          }
+        },
+        "stencil" : {
+          "id" : "ServiceTask"
+        },
+        "dockers" : [ ],
+        "properties" : {
+          "servicetaskfields" : {
+            "fields" : [ {
+              "stringValue" : "Declined",
+              "expression" : "",
+              "string" : "",
+              "implementation" : "Declined",
+              "name" : "status"
+            } ]
+          },
+          "multiinstance_collection" : "",
+          "multiinstance_condition" : "",
+          "servicetaskexpression" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "servicetaskresultvariable" : "",
+          "multiinstance_cardinality" : "",
+          "multiinstance_variable" : "",
+          "multiinstance_type" : "None",
+          "exclusivedefinition" : "false",
+          "servicetaskdelegateexpression" : "",
+          "asynchronousdefinition" : "false",
+          "overrideid" : "declinesetstatus",
+          "name" : "流程拒绝结束",
+          "isforcompensation" : "false",
+          "servicetaskclass" : "com.wl.wlp2ploansystem.infrastructures.workflow.servicetasks.NormalEndProcessInstST"
+        },
+        "childShapes" : [ ]
+      }, {
+        "outgoing" : [ ],
+        "resourceId" : "sid-A32989E5-30FB-422F-A545-88FFE6AB6734",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 447.0524222842347,
+            "y" : 26
+          },
+          "lowerRight" : {
+            "x" : 475.0524222842347,
+            "y" : 54
+          }
+        },
+        "stencil" : {
+          "id" : "EndNoneEvent"
+        },
+        "dockers" : [ ],
+        "properties" : {
+          "executionlisteners" : "",
+          "documentation" : "",
+          "overrideid" : "",
+          "name" : ""
+        },
+        "childShapes" : [ ]
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-A32989E5-30FB-422F-A545-88FFE6AB6734"
+        } ],
+        "resourceId" : "sid-9C1173CC-24F8-4E06-B1CA-B6E7AA4B2C70",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 409.6883360564475,
+            "y" : 40
+          },
+          "lowerRight" : {
+            "x" : 446.5647031043501,
+            "y" : 40
+          }
+        },
+        "stencil" : {
+          "id" : "SequenceFlow"
+        },
+        "dockers" : [ {
+          "x" : 50,
+          "y" : 40
+        }, {
+          "x" : 14,
+          "y" : 14.000000000000002
+        } ],
+        "properties" : {
+          "defaultflow" : "false",
+          "conditionsequenceflow" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "overrideid" : "",
+          "name" : ""
+        },
+        "childShapes" : [ ],
+        "target" : {
+          "resourceId" : "sid-A32989E5-30FB-422F-A545-88FFE6AB6734"
+        }
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-EB62F580-1211-4CA3-A92F-429BC9483967"
+        } ],
+        "resourceId" : "sid-EE35329D-D3EA-434B-9CF2-50BE6CBEE8D1",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 555,
+            "y" : 165
+          },
+          "lowerRight" : {
+            "x" : 655,
+            "y" : 245
+          }
+        },
+        "stencil" : {
+          "id" : "UserTask"
+        },
+        "dockers" : [ ],
+        "properties" : {
+          "formproperties" : "",
+          "multiinstance_collection" : "",
+          "formkeydefinition" : "/loansubsystem/task/computerRoomAduitForm",
+          "tasklisteners" : "",
+          "multiinstance_condition" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "prioritydefinition" : "",
+          "multiinstance_cardinality" : "",
+          "multiinstance_variable" : "",
+          "usertaskassignment" : {
+            "assignment" : {
+              "assignee" : "${workflowService.getRoleUserOfExecution(execution,\"1078896332014534657\")}"
+            }
+          },
+          "multiinstance_type" : "None",
+          "exclusivedefinition" : "false",
+          "duedatedefinition" : "",
+          "asynchronousdefinition" : "false",
+          "overrideid" : "fromrole",
+          "name" : "审批人来源于岗位",
+          "isforcompensation" : "false"
+        },
+        "childShapes" : [ ]
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-1B0FA1EC-A80A-4DED-A90E-C8E71A0B88F5"
+        } ],
+        "resourceId" : "sid-AF3815CC-B01F-4DC7-93DC-203481F44ECC",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 315.37742614425656,
+            "y" : 80.39440683677284
+          },
+          "lowerRight" : {
+            "x" : 347.5386869333356,
+            "y" : 189.02551503822716
+          }
+        },
+        "stencil" : {
+          "id" : "SequenceFlow"
+        },
+        "dockers" : [ {
+          "x" : 20.5,
+          "y" : 20.5
+        }, {
+          "x" : 50,
+          "y" : 40
+        } ],
+        "properties" : {
+          "defaultflow" : "false",
+          "conditionsequenceflow" : "${action== \"decline\"}",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "overrideid" : "",
+          "name" : "拒绝"
+        },
+        "childShapes" : [ ],
+        "target" : {
+          "resourceId" : "sid-1B0FA1EC-A80A-4DED-A90E-C8E71A0B88F5"
+        }
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-298FFBFB-3F76-4294-9D85-D9858DC12837"
+        } ],
+        "resourceId" : "sid-2D3BBB82-95FC-4C07-B501-22BC52489C5B",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 240.21875,
+            "y" : 208.00972274085163
+          },
+          "lowerRight" : {
+            "x" : 292.48552162829117,
+            "y" : 210
+          }
+        },
+        "stencil" : {
+          "id" : "SequenceFlow"
+        },
+        "dockers" : [ {
+          "x" : 50,
+          "y" : 40
+        }, {
+          "x" : 265,
+          "y" : 210
+        }, {
+          "x" : 16.4296875,
+          "y" : 22
+        } ],
+        "properties" : {
+          "defaultflow" : "false",
+          "conditionsequenceflow" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "overrideid" : "",
+          "name" : "",
+          "showdiamondmarker" : false
+        },
+        "childShapes" : [ ],
+        "target" : {
+          "resourceId" : "sid-298FFBFB-3F76-4294-9D85-D9858DC12837"
+        }
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-59D6A272-0F60-44AA-96B3-0AB3DB1D9AD8"
+        } ],
+        "resourceId" : "sid-8A2C2683-F7F5-4076-BA59-1A89DEA18510",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 120.90625,
+            "y" : 355
+          },
+          "lowerRight" : {
+            "x" : 184.15625,
+            "y" : 355
+          }
+        },
+        "stencil" : {
+          "id" : "SequenceFlow"
+        },
+        "dockers" : [ {
+          "x" : 50,
+          "y" : 40
+        }, {
+          "x" : 99,
+          "y" : 40
+        } ],
+        "properties" : {
+          "defaultflow" : "false",
+          "conditionsequenceflow" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "overrideid" : "",
+          "name" : "",
+          "showdiamondmarker" : false
+        },
+        "childShapes" : [ ],
+        "target" : {
+          "resourceId" : "sid-59D6A272-0F60-44AA-96B3-0AB3DB1D9AD8"
+        }
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-E255BAAF-E850-47CD-A86F-76D34E565DBC"
+        } ],
+        "resourceId" : "sid-D69630FB-91CA-4356-97C4-268F89D65838",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 410,
+            "y" : 165
+          },
+          "lowerRight" : {
+            "x" : 510,
+            "y" : 245
+          }
+        },
+        "stencil" : {
+          "id" : "UserTask"
+        },
+        "dockers" : [ ],
+        "properties" : {
+          "formproperties" : "",
+          "multiinstance_collection" : "${workflowService.getRoleUsersOfExecution(execution,\"1072395628903006210\")}",
+          "formkeydefinition" : "/loansubsystem/task/computerRoomAduitForm",
+          "tasklisteners" : "",
+          "multiinstance_condition" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "prioritydefinition" : "",
+          "multiinstance_cardinality" : "",
+          "multiinstance_variable" : "assignee",
+          "usertaskassignment" : {
+            "assignment" : {
+              "assignee" : "${assignee}"
+            }
+          },
+          "multiinstance_type" : "Parallel",
+          "exclusivedefinition" : "false",
+          "duedatedefinition" : "",
+          "asynchronousdefinition" : "false",
+          "overrideid" : "multiaudit",
+          "name" : "会签",
+          "isforcompensation" : "false"
+        },
+        "childShapes" : [ ]
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-EE35329D-D3EA-434B-9CF2-50BE6CBEE8D1"
+        } ],
+        "resourceId" : "sid-E255BAAF-E850-47CD-A86F-76D34E565DBC",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 510.84375,
+            "y" : 205
+          },
+          "lowerRight" : {
+            "x" : 554.15625,
+            "y" : 205
+          }
+        },
+        "stencil" : {
+          "id" : "SequenceFlow"
+        },
+        "dockers" : [ {
+          "x" : 50,
+          "y" : 40
+        }, {
+          "x" : 50,
+          "y" : 40
+        } ],
+        "properties" : {
+          "defaultflow" : "false",
+          "conditionsequenceflow" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "overrideid" : "",
+          "name" : ""
+        },
+        "childShapes" : [ ],
+        "target" : {
+          "resourceId" : "sid-EE35329D-D3EA-434B-9CF2-50BE6CBEE8D1"
+        }
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-EBC5A75D-C3B9-4E80-89A9-720318EEB0A5"
+        } ],
+        "resourceId" : "sid-EB62F580-1211-4CA3-A92F-429BC9483967",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 655.15625,
+            "y" : 205
+          },
+          "lowerRight" : {
+            "x" : 725,
+            "y" : 205
+          }
+        },
+        "stencil" : {
+          "id" : "SequenceFlow"
+        },
+        "dockers" : [ {
+          "x" : 50,
+          "y" : 40
+        }, {
+          "x" : 1,
+          "y" : 40
+        } ],
+        "properties" : {
+          "defaultflow" : "false",
+          "conditionsequenceflow" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "overrideid" : "",
+          "name" : "",
+          "showdiamondmarker" : false
+        },
+        "childShapes" : [ ],
+        "target" : {
+          "resourceId" : "sid-EBC5A75D-C3B9-4E80-89A9-720318EEB0A5"
+        }
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-6D80170F-8E4A-4391-9057-8740806FC097"
+        } ],
+        "resourceId" : "sid-D6EFDBDE-24EC-4846-A72E-8301CB6DB45B",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 315.06071092699085,
+            "y" : 221.07668064521073
+          },
+          "lowerRight" : {
+            "x" : 384.9340820672422,
+            "y" : 314.7102644380221
+          }
+        },
+        "stencil" : {
+          "id" : "SequenceFlow"
+        },
+        "dockers" : [ {
+          "x" : 14.0622233550788,
+          "y" : 21.338193137691945
+        }, {
+          "x" : 50,
+          "y" : 40
+        } ],
+        "properties" : {
+          "defaultflow" : "false",
+          "conditionsequenceflow" : "${action== \"request\"}",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "overrideid" : "",
+          "name" : "驳回至进件",
+          "showdiamondmarker" : false
+        },
+        "childShapes" : [ ],
+        "target" : {
+          "resourceId" : "sid-6D80170F-8E4A-4391-9057-8740806FC097"
+        }
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-D69630FB-91CA-4356-97C4-268F89D65838"
+        } ],
+        "resourceId" : "sid-6840DD29-8461-481B-B523-EEFD4978FA7F",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 330.18749440726833,
+            "y" : 205.16740696290057
+          },
+          "lowerRight" : {
+            "x" : 409.94531809273167,
+            "y" : 205.43415553709943
+          }
+        },
+        "stencil" : {
+          "id" : "SequenceFlow"
+        },
+        "dockers" : [ {
+          "x" : 20.5,
+          "y" : 20.5
+        }, {
+          "x" : 50,
+          "y" : 40
+        } ],
+        "properties" : {
+          "defaultflow" : "false",
+          "conditionsequenceflow" : "${action== \"approve\"}",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "overrideid" : "",
+          "name" : "提交"
+        },
+        "childShapes" : [ ],
+        "target" : {
+          "resourceId" : "sid-D69630FB-91CA-4356-97C4-268F89D65838"
+        }
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-25CD4D44-E07E-45D1-858E-F974AABE29FC"
+        } ],
+        "resourceId" : "sid-3B523981-875F-4F19-BD31-9263BD4A4C3B",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 285.21875,
+            "y" : 355
+          },
+          "lowerRight" : {
+            "x" : 364.78125,
+            "y" : 355
+          }
+        },
+        "stencil" : {
+          "id" : "SequenceFlow"
+        },
+        "dockers" : [ {
+          "x" : 50,
+          "y" : 40
+        }, {
+          "x" : 50,
+          "y" : 40
+        } ],
+        "properties" : {
+          "defaultflow" : "false",
+          "conditionsequenceflow" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "overrideid" : "",
+          "name" : ""
+        },
+        "childShapes" : [ ],
+        "target" : {
+          "resourceId" : "sid-25CD4D44-E07E-45D1-858E-F974AABE29FC"
+        }
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-B8BC3196-C1EB-49B9-A745-6E57533455F3"
+        } ],
+        "resourceId" : "sid-EBC5A75D-C3B9-4E80-89A9-720318EEB0A5",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 725,
+            "y" : 165
+          },
+          "lowerRight" : {
+            "x" : 825,
+            "y" : 245
+          }
+        },
+        "stencil" : {
+          "id" : "UserTask"
+        },
+        "dockers" : [ ],
+        "properties" : {
+          "formproperties" : "",
+          "multiinstance_collection" : "",
+          "formkeydefinition" : "/loansubsystem/task/computerRoomAduitForm",
+          "tasklisteners" : "",
+          "multiinstance_condition" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "prioritydefinition" : "",
+          "multiinstance_cardinality" : "",
+          "multiinstance_variable" : "",
+          "usertaskassignment" : {
+            "assignment" : {
+              "assignee" : "${workflowService.getDepartmentRoleCategoryUserOfExecution(execution,\"base_rolecategory_trackingpersoninfomr\")}"
+            }
+          },
+          "multiinstance_type" : "None",
+          "exclusivedefinition" : "false",
+          "duedatedefinition" : "",
+          "asynchronousdefinition" : "false",
+          "overrideid" : "fromrolecategory",
+          "name" : "审批人来源于岗位类别",
+          "isforcompensation" : "false"
+        },
+        "childShapes" : [ ]
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-EE740ACD-FE42-47A1-9064-AD09ABD02587"
+        } ],
+        "resourceId" : "sid-F027EF72-F4B1-4288-9584-FA0AF233E5F4",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 725,
+            "y" : 270
+          },
+          "lowerRight" : {
+            "x" : 825,
+            "y" : 350
+          }
+        },
+        "stencil" : {
+          "id" : "UserTask"
+        },
+        "dockers" : [ ],
+        "properties" : {
+          "formproperties" : "",
+          "multiinstance_collection" : "",
+          "formkeydefinition" : "/loansubsystem/task/computerRoomAduitForm",
+          "tasklisteners" : "",
+          "multiinstance_condition" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "prioritydefinition" : "",
+          "multiinstance_cardinality" : "",
+          "multiinstance_variable" : "",
+          "usertaskassignment" : {
+            "assignment" : {
+              "candidateUsers" : [ {
+                "$$hashKey" : "0GC",
+                "value" : "${workflowService.getRoleUsersOfExecution(execution,\"1078899840944095233\")}"
+              } ],
+              "assignee" : ""
+            }
+          },
+          "multiinstance_type" : "None",
+          "exclusivedefinition" : "false",
+          "duedatedefinition" : "",
+          "asynchronousdefinition" : "false",
+          "overrideid" : "claim",
+          "name" : "任务签收",
+          "isforcompensation" : "false"
+        },
+        "childShapes" : [ ]
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-F027EF72-F4B1-4288-9584-FA0AF233E5F4"
+        } ],
+        "resourceId" : "sid-B8BC3196-C1EB-49B9-A745-6E57533455F3",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 775,
+            "y" : 245.375
+          },
+          "lowerRight" : {
+            "x" : 775,
+            "y" : 269.625
+          }
+        },
+        "stencil" : {
+          "id" : "SequenceFlow"
+        },
+        "dockers" : [ {
+          "x" : 50,
+          "y" : 40
+        }, {
+          "x" : 50,
+          "y" : 40
+        } ],
+        "properties" : {
+          "defaultflow" : "false",
+          "conditionsequenceflow" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "overrideid" : "",
+          "name" : ""
+        },
+        "childShapes" : [ ],
+        "target" : {
+          "resourceId" : "sid-F027EF72-F4B1-4288-9584-FA0AF233E5F4"
+        }
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-86CDF07C-931F-44C2-BEF0-0E0C1BD39EAE"
+        } ],
+        "resourceId" : "sid-C07CC7C7-00FF-4C05-B575-CBE1D0645E48",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 775,
+            "y" : 470.875
+          },
+          "lowerRight" : {
+            "x" : 775,
+            "y" : 510
+          }
+        },
+        "stencil" : {
+          "id" : "SequenceFlow"
+        },
+        "dockers" : [ {
+          "x" : 50,
+          "y" : 79
+        }, {
+          "x" : 15,
+          "y" : 15
+        } ],
+        "properties" : {
+          "defaultflow" : "false",
+          "conditionsequenceflow" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "overrideid" : "",
+          "name" : "",
+          "showdiamondmarker" : false
+        },
+        "childShapes" : [ ],
+        "target" : {
+          "resourceId" : "sid-86CDF07C-931F-44C2-BEF0-0E0C1BD39EAE"
+        }
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-6830216C-AAE8-4CE2-9F43-D46A29CC1D34"
+        } ],
+        "resourceId" : "sid-EE740ACD-FE42-47A1-9064-AD09ABD02587",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 775,
+            "y" : 350.375
+          },
+          "lowerRight" : {
+            "x" : 775,
+            "y" : 389.625
+          }
+        },
+        "stencil" : {
+          "id" : "SequenceFlow"
+        },
+        "dockers" : [ {
+          "x" : 50,
+          "y" : 40
+        }, {
+          "x" : 50,
+          "y" : 40
+        } ],
+        "properties" : {
+          "defaultflow" : "false",
+          "conditionsequenceflow" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "overrideid" : "",
+          "name" : ""
+        },
+        "childShapes" : [ ],
+        "target" : {
+          "resourceId" : "sid-6830216C-AAE8-4CE2-9F43-D46A29CC1D34"
+        }
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-832A9D0F-BFF9-4066-9588-D0F8316C17B5"
+        } ],
+        "resourceId" : "sid-59D6A272-0F60-44AA-96B3-0AB3DB1D9AD8",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 20,
+            "y" : 315
+          },
+          "lowerRight" : {
+            "x" : 120,
+            "y" : 395
+          }
+        },
+        "stencil" : {
+          "id" : "ServiceTask"
+        },
+        "dockers" : [ ],
+        "properties" : {
+          "servicetaskfields" : {
+            "fields" : [ {
+              "stringValue" : "Approving",
+              "expression" : "",
+              "string" : "",
+              "implementation" : "Approving",
+              "name" : "status"
+            } ]
+          },
+          "multiinstance_collection" : "",
+          "multiinstance_condition" : "",
+          "servicetaskexpression" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "servicetaskresultvariable" : "",
+          "multiinstance_cardinality" : "",
+          "multiinstance_variable" : "",
+          "multiinstance_type" : "None",
+          "exclusivedefinition" : "false",
+          "servicetaskdelegateexpression" : "",
+          "asynchronousdefinition" : "false",
+          "overrideid" : "approvingsetstatus",
+          "name" : "审批中",
+          "isforcompensation" : "false",
+          "servicetaskclass" : "com.wl.wlp2ploansystem.infrastructures.workflow.servicetasks.SetProcessInstStatusST"
+        },
+        "childShapes" : [ ]
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-3054DFB4-61E7-4728-9304-CF5677B980D5"
+        } ],
+        "resourceId" : "sid-832A9D0F-BFF9-4066-9588-D0F8316C17B5",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 103.45006771403422,
+            "y" : 250.41883182112468
+          },
+          "lowerRight" : {
+            "x" : 156.54993228596578,
+            "y" : 314.5811681788753
+          }
+        },
+        "stencil" : {
+          "id" : "SequenceFlow"
+        },
+        "dockers" : [ {
+          "x" : 50,
+          "y" : 40
+        }, {
+          "x" : 50,
+          "y" : 40
+        } ],
+        "properties" : {
+          "defaultflow" : "false",
+          "conditionsequenceflow" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "overrideid" : "",
+          "name" : ""
+        },
+        "childShapes" : [ ],
+        "target" : {
+          "resourceId" : "sid-3054DFB4-61E7-4728-9304-CF5677B980D5"
+        }
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-8A2C2683-F7F5-4076-BA59-1A89DEA18510"
+        } ],
+        "resourceId" : "sid-25CD4D44-E07E-45D1-858E-F974AABE29FC",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 185,
+            "y" : 315
+          },
+          "lowerRight" : {
+            "x" : 285,
+            "y" : 395
+          }
+        },
+        "stencil" : {
+          "id" : "UserTask"
+        },
+        "dockers" : [ ],
+        "properties" : {
+          "formproperties" : "",
+          "multiinstance_collection" : "",
+          "formkeydefinition" : "/loansubsystem/task/computerRoomAduitForm",
+          "tasklisteners" : "",
+          "multiinstance_condition" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "prioritydefinition" : "",
+          "multiinstance_cardinality" : "",
+          "multiinstance_variable" : "",
+          "usertaskassignment" : {
+            "assignment" : {
+              "assignee" : "${initiator}"
+            }
+          },
+          "multiinstance_type" : "None",
+          "exclusivedefinition" : "false",
+          "duedatedefinition" : "",
+          "asynchronousdefinition" : "false",
+          "overrideid" : "enter",
+          "name" : "进件重新提交",
+          "isforcompensation" : "false"
+        },
+        "childShapes" : [ ]
+      }, {
+        "outgoing" : [ {
+          "resourceId" : "sid-3054DFB4-61E7-4728-9304-CF5677B980D5"
+        } ],
+        "resourceId" : "sid-4FF647BE-DE48-4ED6-B14E-151E4B2959DF",
+        "bounds" : {
+          "upperLeft" : {
+            "x" : 65.21875,
+            "y" : 210
+          },
+          "lowerRight" : {
+            "x" : 139.78125,
+            "y" : 210
+          }
+        },
+        "stencil" : {
+          "id" : "SequenceFlow"
+        },
+        "dockers" : [ {
+          "x" : 15,
+          "y" : 15
+        }, {
+          "x" : 50,
+          "y" : 40
+        } ],
+        "properties" : {
+          "defaultflow" : "false",
+          "conditionsequenceflow" : "",
+          "executionlisteners" : "",
+          "documentation" : "",
+          "overrideid" : "",
+          "name" : "提交",
+          "showdiamondmarker" : false
+        },
+        "childShapes" : [ ],
+        "target" : {
+          "resourceId" : "sid-3054DFB4-61E7-4728-9304-CF5677B980D5"
+        }
+      } ]
+    },
+    "revision" : 1
+  }
