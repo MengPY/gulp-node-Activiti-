@@ -3,6 +3,11 @@ var fs = require('fs')
 // var multiparty = require('multiparty');
 var server = http.createServer()
 
+const https = require('https');
+
+let reqUrl = 'https://www.liepin.com/zhaopin/?init=-1&headckid=0417b67c8d823dcb&fromSearchBtn=2&sfrom=click-pc_homepage-centre_searchbox-search_new&ckid=0417b67c8d823dcb&degradeFlag=0&key=%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91&siTag=D_7XS8J-xxxQY6y2bMqEWQ%7EfA9rXquZc5IkJpXC-Ycixw&d_sfrom=search_fp&d_ckId=466b672969a37b2deaf20975f4b05e7c&d_curPage=0&d_pageSize=40&d_headId=466b672969a37b2deaf20975f4b05e7c&curPage=1';
+
+
 
 server.on('request', function (req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*"); // 设置可访问的源
@@ -14,13 +19,77 @@ server.on('request', function (req, res) {
   // res.setHeader("content-type", "application/json")
   var url = req.url
   // console.log(url)
-  var viewModelId = url.substr(-4) == 'json'? url.split('model/')[1].split('/json')[0] : 1;
-  var saveModelId = url.substr(-4) == 'save'? url.split('model/')[1].split('/save')[0] : 1;
+  var viewModelId = url.substr(-4) == 'json' && url.split('model/')[1].split('/json')[0];
+  var saveModelId = url.substr(-4) == 'save' && url.split('model/')[1].split('/save')[0];
   // console.log(modelId)
   // console.log(url)
-  if (url === '/') {
-	 res.end('hello nodejs')
-  } else if (url === '/plain') {
+  if (url === '/') {	 
+    var response = res;
+    https.get(reqUrl, function (res) {
+      let chunks = [],
+          size = 0;
+      res.on('data', function (chunk) {
+          chunks.push(chunk);
+          size += chunk.length;
+      });
+
+      res.on('end', function () {
+          // console.log('数据包传输完毕');
+          let data = Buffer.concat(chunks, size);
+          // console.log(data);
+          let html = data.toString();
+          response.setHeader('Content-Type', 'text/html; charset=utf-8')
+          response.end(html);
+      });
+    })
+  } else if (url === '/writeFile') {
+    // fs.readFile('./writeme.txt', function(err, data) {
+    //   if (err) throw err;
+    //   var readRst = data;
+      
+    // })
+    fs.writeFile('./writeme.json', '我是写入的内容', function (err) {
+      // 判断 如果有错 抛出错误 否则 打印写入成功
+      if (err) throw err;
+      res.setHeader('Content-Type', 'text/html; charset=utf-8')
+      res.end('写入文件成功!')
+   })
+    
+  } else if (url === '/writeStream') {
+    // fs.readFile('./writeme.txt', function(err, data) {
+    //   if (err) throw err;
+    //   var readRst = data;
+      
+    // })
+	    var json = { name: 'mpy', age: '22' };
+		var Stream = fs.createWriteStream('writeme.json', {start: 0});
+		Stream.write(JSON.stringify(json, null, 2), 'utf8');
+		Stream.end();
+		res.setHeader('Content-Type', 'text/html; charset=utf-8')
+		res.end('写入文件成功!')
+    
+  } else if ( url === '/pipe') {
+	  
+		// 创建一个可读流
+		var readerStream = fs.createReadStream('writeme.json');
+
+		// 创建一个可写流
+		var writerStream = fs.createWriteStream('output.json');
+
+		// 管道读写操作
+		// 读取 input.txt 文件内容，并将内容写入到 output.txt 文件中
+		readerStream.pipe(writerStream);
+		res.setHeader('Content-Type', 'text/html; charset=utf-8')
+		res.end("程序执行完毕");
+  } else if (url === '/delFile') {
+    // 删除文件
+    fs.unlink('./writeme.json', function (err) {
+      // 判断 如果有错 抛出错误 否则 打印删除成功
+      if (err) throw err; 
+      res.setHeader('Content-Type', 'text/html; charset=utf-8')
+      res.end('删除成功!')
+    })
+  }  else if (url === '/plain') {
     // text/plain 就是普通文本
     res.setHeader('Content-Type', 'text/plain; charset=utf-8')
     res.end('hello 世界')
